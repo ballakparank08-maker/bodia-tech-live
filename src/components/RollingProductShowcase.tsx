@@ -81,17 +81,21 @@ export const RollingProductShowcase: React.FC<RollingProductShowcaseProps> = () 
       >
         <div className="inline-flex gap-4 sm:gap-6 w-max">
           {/* Duplicate the array to create a seamless loop */}
-          {[...images, ...images].map((src, index) => (
-            <img 
-              key={index}
-              src={src} 
-              alt={`Store grid ${index}`} 
-              className="h-[140px] sm:h-[200px] md:h-[250px] lg:h-[300px] w-auto rounded-xl object-contain border border-slate-700 shadow-lg hover:border-rose-500 transition-colors"
-              onError={(e) => {
-                e.currentTarget.src = 'https://via.placeholder.com/400x300?text=Please+add+image+to+public/images';
-              }}
-            />
-          ))}
+          {[...images, ...images].map((src, index) => {
+            // Ensure the path works both locally and on GitHub Pages (sub-path)
+            const resolvedSrc = src.startsWith('/') ? `${import.meta.env.BASE_URL}${src.slice(1)}` : src;
+            return (
+              <img 
+                key={index}
+                src={resolvedSrc} 
+                alt={`Store grid ${index}`} 
+                className="h-[140px] sm:h-[200px] md:h-[250px] lg:h-[300px] w-auto rounded-xl object-contain border border-slate-700 shadow-lg hover:border-rose-500 transition-colors"
+                onError={(e) => {
+                  e.currentTarget.src = 'https://via.placeholder.com/400x300?text=Image+Not+Found';
+                }}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
