@@ -2,7 +2,7 @@
   "name": "react-example",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://ballakparank08-maker.github.io/bodia-tech",
+  "homepage": "https://ballakparank08-maker.github.io/bodia-tech-live",
   "type": "module",
   "scripts": {
     "dev": "vite",

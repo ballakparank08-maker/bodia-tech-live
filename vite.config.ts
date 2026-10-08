@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(({ command }) => {
   return {
-    base: command === 'build' ? '/bodia-tech/' : '/',
+    base: command === 'build' ? '/bodia-tech-live/' : '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
